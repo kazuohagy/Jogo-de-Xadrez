@@ -54,21 +54,26 @@ public class UI {
 		printCapturedPieces(captured);
 		System.out.println("Turn : " + chessMatch.getTurn());
 		if (!chessMatch.getCheckMate()) {
-			System.out.println("Waiting player: " + chessMatch.getCurrentPlayer());
+			if (chessMatch.getCurrentPlayer() == Color.WHITE) {
+				System.out.println("Waiting player: " + ANSI_WHITE + chessMatch.getCurrentPlayer() + ANSI_RESET);
+			}
+			if (chessMatch.getCurrentPlayer() == Color.BLACK) {
+				System.out.println("Waiting player: " + ANSI_YELLOW + chessMatch.getCurrentPlayer() + ANSI_RESET);
+			}
 			if (chessMatch.getCheck()) {
-				System.out.println(ANSI_PURPLE +"CHECK!"+ ANSI_RESET);
+				System.out.println(ANSI_PURPLE + "CHECK!" + ANSI_RESET);
+			}
+		} else {
+			System.out.println(ANSI_PURPLE + "CHECKMATE!" + ANSI_RESET);
+			if (chessMatch.getCurrentPlayer() == Color.WHITE) {
+				System.out.println(
+						ANSI_GREEN + "WINNER: " + ANSI_RESET + ANSI_WHITE + chessMatch.getCurrentPlayer() + ANSI_RESET);
+			} else {
+				System.out.println(ANSI_WHITE + "WINNER: " + ANSI_RESET + ANSI_YELLOW + chessMatch.getCurrentPlayer()
+						+ ANSI_RESET);
 			}
 		}
-		else {
-			System.out.println(ANSI_PURPLE +"CHECKMATE!" + ANSI_RESET);
-			if(chessMatch.getCurrentPlayer() == Color.WHITE) {
-				System.out.println(ANSI_GREEN +"WINNER: " +ANSI_RESET+ANSI_WHITE+ chessMatch.getCurrentPlayer() + ANSI_RESET);	
-			}
-			else {
-				System.out.println(ANSI_WHITE +"WINNER: " +ANSI_RESET+ANSI_YELLOW+ chessMatch.getCurrentPlayer() + ANSI_RESET);
-			}
-		}
-	
+
 	}
 
 	public static void printBoard(ChessPiece[][] pieces) {
