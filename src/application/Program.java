@@ -41,7 +41,7 @@ public class Program {
 				}
 				if(chessMatch.getPromoted()!=null) {
 					System.out.print("Enter piece for promotion (B/N/R/Q): ");
-					String type = sc.next();
+					String type = sc.nextLine();
 					chessMatch.replacePromotedPiece(type);
 				}
 
